@@ -1,68 +1,158 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# <h1 align = "center"> Factory
 
-## Available Scripts
+## <h3 align = "center"> Entity Framework in ASP.NET MVC, Many to Many Relationships 8.7.20
 
-In the project directory, you can run:
+## <h2 align = "center"> About
 
-### `npm start`
+<p align = "center"> This is an application for a factory. The user may create new machines and engineers, and connect those objects with a many to many relationship.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## **✅REQUIREMENTS**
+* Install [Git v2.62.2+](https://git-scm.com/downloads/)
+* Install [.NET version 3.1 SDK v2.2+](https://dotnet.microsoft.com/download/dotnet-core/2.2)
+* Install [Visual Studio Code](https://code.visualstudio.com/)
+* Install [MySql Workbench](https://www.mysql.com/products/workbench/)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## **💻SETUP**
+* to clone this content, copy the url provided by the green 'Code' button in GitHub
+* in command line use the command 'git clone (GitHub url)'
+* open the program in a code editor
+* navigate to the Factory directory and type dotnet build in the command line to compile the code
+* remaining in the Factory directory type dotnet ef database update to create the database
+* type dotnet run in the command line to run the program
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🔍Specs
 
-### `npm run build`
+| Behavior    | Input | Output |
+| :---------- | ----- | -----: |
+| Program can create an Engineer object | none | none |
+| Engineer object holds engineer name and machines they are licensed to repair | none | none |
+| Program can show list of all engineers | none | list |
+| Program can show engineer details, including machines they are licensed to repair | none | none |
+| Program can create new engineers | none | none |
+| Program can create a Machine object | none | none |
+| Machine object holds machine name and engineers licensed to repair them | none | none |
+| Program can show list of all machines | none | list |
+| Program can show machine details, including engineers licensed to repair them | none | none |
+| Program can create new machines | none | none |
+| Engineer <=> Machine reflects many to many relationship | none | none |
+| Join relationships between Engineer & Machine can be added or deleted | none | none |
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+As a patron, I want to check a book out, so that I can take it home with me.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+As a patron, I want to know how many copies of a book are on the shelf, so that I can see if any are available. (Hint: make a copies table; a book should have many copies.)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- a search to find a book. 
+- in details of a book - show how many copies of a book there are left
+- where are we adding copies?(ie into our copies table) on our website.  
+    - in copies create, viewbagbookname and "add/submit" a copy in the table.
+- 
+-be able to obtain and pass a copyId.
+-be able to find first copyid that isnt already checked out. in controller.
+-change that copyid record to true.
+-
+@*<form action="Copies" method="post">
+  </form>*@
+  @* , value="@(copy.CopyId)" *@
 
-### `npm run eject`
+@*@Html.HiddenFor(copy=>copy.CopyId)*@
+@*new {bookId = Model.BookId}*@
+@*add a value to button to pass back}*@
+@*make sure to pass back copyId.*@
+@*@using(Html.BeginForm("IsCheckedOut", "Copies", new { id= "@(copy.CopyId)"} ))*@
+@*
+@foreach (Copy copy in @Model.Copies)
+{
+  <form action="Copies" method="post">
+  
+    <input type="hidden", id="@(copy.CopyId)", name="@(copy.CopyId)" />
+    <button class ="btn btn-info", type="submit">checkout</button>
+  
+  </form>
+  <p>"@(copy.CopyId)"</p>
+  <p>"@Model.Copies"</p>
+}
+*@
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+@foreach(Copy copy in @ViewBag.CopiesList)
+{
+  @using(Html.BeginForm("IsCheckedOut", "Copies"))
+  {
+    <input type="hidden", id="CopyId", name="CopyId" value="@(copy.CopyId)"/>
+    <button class ="btn btn-info", type="submit">checkout</button>
+  }
+  <p>"@(copy.CopyId)"</p>
+  
+}
+## 🐛Known Bugs
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+_No known bugs_
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 📫Support and contact details
 
-## Learn More
+Contact : Megan Hepner
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🔧Technologies Used
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* C#
+* ASP.NET MVC
+* Entity
+* MySql
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## **📘 License**
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-### Analyzing the Bundle Size
+@{
+  Layout = "_Layout";
+}
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+@model Library.Models.Book;
+@using Library.Models
 
-### Making a Progressive Web App
+<h2>Book Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.BookName): @Html.DisplayFor(model => model.BookName)</h3>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+@if(@Model.Authors.Count == 0)
+{
+  <p>This Book does not have any Authors</p>
+}
+else
+{
+  <h4>Author of this book:</h4>
+  <ul>
+  @foreach(var join in Model.Authors)
+  {
+    <li>@join.Author.AuthorName</li>
+  }
+  </ul>
+}
 
-### Advanced Configuration
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+@using (Html.BeginForm("Create", "Copies", FormMethod.Post))
+{
+  @Html.HiddenFor(model => model.BookId)
+  @Html.Label("Copies to Add")
+  @Html.TextBox("Copies", "Enter Number to add", new {@type = "number"})
+  <button class ="btn btn-info", type="submit">Add</button>
+}
 
-### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+@foreach(Copy copy in @ViewBag.CopiesList)
+{
+  @using(Html.BeginForm("IsCheckedOut", "Copies"))
+  {
+    <input type="hidden", id="CopyId", name="CopyId" value="@(copy.CopyId)"/>
+    <button class ="btn btn-info", type="submit">checkout</button>
+  }
+  <p>"@(copy.CopyId)"</p>
+  
+}
 
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+"@(copy.CopyId)"
+@*new{name = copy.CopyId))*@
+<p>@Html.ActionLink("Back to Book index", "Index")</p>
+<p>@Html.ActionLink("Edit Link doesnt work not sorry", "Edit", new { id = Model.BookId })</p>
+<p>@Html.ActionLink("Delete link doesnt work", "Delete", new { id = Model.BookId })</p>
