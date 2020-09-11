@@ -32,8 +32,6 @@
 | Program can Update/edit Keg information| none | none |
 | Program can delete a keg | none | none |
 
-
-
 ## 🐛`Known Bugs`
 
 _No known bugs_
