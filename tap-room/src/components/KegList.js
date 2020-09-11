@@ -10,6 +10,7 @@ function KegList(props){
           whenKegClicked = {props.onKegSelection}
           name = {keg.name}
           alcohol = {keg.alcohol}
+          quantity = {keg.quantity}
           id ={keg.id}
           key ={keg.id}
         />
