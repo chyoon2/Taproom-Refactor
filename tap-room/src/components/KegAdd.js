@@ -10,7 +10,7 @@ function KegAdd(props) {
       name: event.target.name.value,
       alcohol: event.target.alcohol.value,
       quantity: event.target.quantity.value,
-      id: v4(),
+      id: v4()
     });
   }
   return (
