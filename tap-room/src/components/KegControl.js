@@ -38,10 +38,19 @@ class KegControl extends React.Component {
     this.setState({ selectedKeg: selectedKeg })
   }
 
+  handleBuyingSelectedKeg = (id) => {
+    const selectedKeg = this.state.masterKegList.filter(
+      (keg) => keg.id === id)[0]; 
+      if(selectedKeg.quantity >0) {
+        selectedKeg.quantity = selectedKeg.quantity- 1;
+      }
+        this.setState({})
+  }
+
   render() {
     let currentlyVisibleState = null;
     let buttonText = null;
-    
+
     if (this.state.selectedKeg != null) {
       currentlyVisibleState = (
         <KegDetail
@@ -60,6 +69,7 @@ class KegControl extends React.Component {
         <KegList
           kegList={this.state.masterKegList}
           onKegSelection={this.handleChangingSelectedKeg}
+          onBuySelection={this.handleBuyingSelectedKeg}
         />
       );
       buttonText = "Add Keg"
