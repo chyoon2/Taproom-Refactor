@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function KegDetail() {
+function KegDetail(props) {
   const { keg, onClickingDelete } = props;
 
   return(
@@ -9,7 +9,7 @@ function KegDetail() {
       <h1>Keg Detail</h1>
       <h3>{keg.name}-{keg.alcohol} - {keg.quantity}</h3>
 
-      <button onClick={() => onClickingDelete(keg.id)}>Close Ticket</button>
+      <button onClick={() => onClickingDelete(keg.id)}>Delete Keg</button>
       <hr />
     </React.Fragment>
   );

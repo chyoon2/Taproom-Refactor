@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import KegControl from "./KegControl";
 import Header from "./Header";
 
