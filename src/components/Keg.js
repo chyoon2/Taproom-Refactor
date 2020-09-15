@@ -6,10 +6,11 @@ function Keg(props) {
     <React.Fragment>
       <div onClick={() => props.whenKegClicked(props.id)}>
         <h3>
-          {props.name} - {props.alcohol} - {props.quantity}
+          <p>name: {props.name}</p> <p>alcohol: {props.alcohol}</p><p> Quantity in Keg: {props.quantity}</p>
         </h3>
       </div>
       <button onClick={() => props.whenBuyClicked(props.id)}>Buy Keg</button>
+      <hr />
     </React.Fragment>
   );
 }
