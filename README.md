@@ -32,6 +32,11 @@
 | Program can Update/edit Keg information| none | none |
 | Program can delete a keg | none | none |
 
+--------
+--------
+## 🐛`Component Tree`
+![ProjectComponent](./README-Images/taproom.png)
+
 ## 🐛`Known Bugs`
 
 _No known bugs_
