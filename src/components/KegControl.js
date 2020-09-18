@@ -78,6 +78,10 @@ class KegControl extends React.Component {
       type: 'TOGGLE_FORM',
     }
     dispatch(action2);
+    const action3 = {
+      type: 'SELECT_GONULL'
+    }
+    dispatch(action3);
   }
 
   handleChangingSelectedKeg = (id) => {
@@ -91,6 +95,7 @@ class KegControl extends React.Component {
       quantity: selectedKeg.quantity,
     }
     dispatch(action);
+    console.log("motherfucker")
   }
 
   handleBuyingSelectedKeg = (id) => {

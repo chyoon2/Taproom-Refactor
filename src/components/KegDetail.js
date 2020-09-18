@@ -9,6 +9,7 @@ function KegDetail(props) {
   return(
     <React.Fragment>
       <h1>Keg Detail</h1>
+      
       <h3>ge</h3>
 
       <button onClick={() => onClickingDelete(keg.id)}>Delete Keg</button>
