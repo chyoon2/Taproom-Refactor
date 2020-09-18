@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
   formVisibleOnPage: formVisibleReducer,
   masterKegList: kegListReducer,
   editFormOnPage: editFormReducer,
-  selectKeg: selectKegReducer
+  selectedKeg: selectKegReducer
 }); 
 
 export default rootReducer;
