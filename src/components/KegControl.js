@@ -11,7 +11,6 @@ class KegControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedKeg: null,
     }
   }
   handleEditClick = () => {
@@ -36,9 +35,11 @@ class KegControl extends React.Component {
       type: 'EDIT_FORM',
     }
     dispatch(action2);
-    this.setState({ 
-      selectedKeg : null  
-    });
+    const action3 = {
+      type: 'SELECT_FORM'
+      //info on the type of form?
+    }
+    dispatch(action3);
   }
 
   handleClick = () => {
@@ -48,9 +49,11 @@ class KegControl extends React.Component {
         type: 'EDIT_FORM',
       }
       dispatch(action2);
-      this.setState({
-        selectedKeg: null,
-      });
+      const action3 = {
+        type: 'SELECT_FORM'
+        //info on the type of form?
+      }
+      dispatch(action3);
     } else {
       const action = {
         type: 'TOGGLE_FORM'
@@ -77,8 +80,14 @@ class KegControl extends React.Component {
   }
 
   handleChangingSelectedKeg = (id) => {
+    const {dispatch} = this.props;
     const selectedKeg = this.props.masterKegList[id];
-    this.setState({ selectedKeg: selectedKeg })
+    // this.setState({ selectedKeg: selectedKeg })
+    const action3 = {
+      type: 'SELECT_FORM',
+      id: id
+    }
+    dispatch(action3);
   }
 
   handleBuyingSelectedKeg = (id) => {
@@ -97,7 +106,12 @@ class KegControl extends React.Component {
       id: id,
     }
     dispatch(action);
-    this.setState({selectedKeg: null});
+    // this.setState({selectedKeg: null});
+    const action3 = {
+      type: 'SELECT_FORM'
+      //info on the type of form?
+    }
+    dispatch(action3);
   }
 
 
@@ -155,7 +169,8 @@ const mapStateToProps = state => {
   return {
     masterKegList: state.masterKegList,
     formVisibleOnPage: state.formVisibleOnPage,
-    editFormOnPage: state.editFormOnPage
+    editFormOnPage: state.editFormOnPage,
+    selectKeg: state.selectKegReducer
   }
 }
 KegControl = connect(mapStateToProps)(KegControl)

@@ -9,6 +9,7 @@ function KegEdit(props) {
     props.onEditKeg({
       name: event.target.name.value, alcohol: event.target.alcohol.value, quantity: event.target.quantity.value, id: keg.id
     });
+   
   }
   return (
     <React.Fragment>
