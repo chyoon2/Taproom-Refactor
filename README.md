@@ -4,7 +4,7 @@
 
 ## <h2 align = "center"> `About`
 
-<p align = "center"> This is an application for a Taproom. The user may search an inventory of kegs, add kegs, "buy" kegs, update, and delete kegs. Demonstrating React CRUD functionality.
+<p align = "center"> This is an application for a Taproom. The user may search an inventory of kegs, add kegs, "buy" kegs, update, and delete kegs. Demonstrating React CRUD functionality & Redux functionality.
 
 ## **✅`REQUIREMENTS`**
 * Install [Visual Studio Code](https://code.visualstudio.com/)
