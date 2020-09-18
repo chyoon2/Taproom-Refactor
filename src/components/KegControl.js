@@ -13,6 +13,7 @@ class KegControl extends React.Component {
     this.state = {
     }
   }
+
   handleEditClick = () => {
     const { dispatch } = this.props;
     const action = {
@@ -36,8 +37,7 @@ class KegControl extends React.Component {
     }
     dispatch(action2);
     const action3 = {
-      type: 'SELECT_FORM'
-      //info on the type of form?
+      type: 'SELECT_GONULL'
     }
     dispatch(action3);
   }
@@ -50,11 +50,12 @@ class KegControl extends React.Component {
       }
       dispatch(action2);
       const action3 = {
-        type: 'SELECT_FORM'
-        //info on the type of form?
+        type: 'SELECT_GONULL'
       }
       dispatch(action3);
+
     } else {
+
       const action = {
         type: 'TOGGLE_FORM'
       }
@@ -84,10 +85,14 @@ class KegControl extends React.Component {
     const selectedKeg = this.props.masterKegList[id];
     // this.setState({ selectedKeg: selectedKeg })
     const action3 = {
-      type: 'SELECT_FORM',
-      id: id
+      type: 'SELECT_KEG',
+      id: selectedKeg.id,
+      name: selectedKeg.name,
+      alcohol: selectedKeg.alcohol,
+      quantity: selectedKeg.quantity,
     }
     dispatch(action3);
+    console.log(selectedKeg);
   }
 
   handleBuyingSelectedKeg = (id) => {
@@ -108,8 +113,7 @@ class KegControl extends React.Component {
     dispatch(action);
     // this.setState({selectedKeg: null});
     const action3 = {
-      type: 'SELECT_FORM'
-      //info on the type of form?
+      type: 'SELECT_GONULL'
     }
     dispatch(action3);
   }
@@ -162,7 +166,8 @@ class KegControl extends React.Component {
 KegControl.propTypes = {
   masterKegList: PropTypes.object,
   formVisibleOnPage: PropTypes.bool,
-  editFormOnPage: PropTypes.bool
+  editFormOnPage: PropTypes.bool,
+  selectKeg: PropTypes.object
 };
 
 const mapStateToProps = state => {
