@@ -4,7 +4,7 @@ export default (state = {}, action) => {
   case 'ADD_KEG':
     return Object.assign({}, state, {
       [id]: {
-        name: name,
+        name:name,
         alcohol: alcohol,
         quantity: quantity,
         id: id

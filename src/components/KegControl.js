@@ -73,8 +73,8 @@ class KegControl extends React.Component {
   }
 //hey
   handleBuyingSelectedKeg = (id) => {
-    const selectedKeg = this.props.masterKegList.filter(
-      (keg) => keg.id === id)[0]; 
+    const selectedKeg = this.props.masterKegList[id];
+    console.log(this.props.masterKegList[id]) 
       if(selectedKeg.quantity >0) {
         selectedKeg.quantity = selectedKeg.quantity- 1;
       }
@@ -138,9 +138,8 @@ KegControl.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    masterKegList: state.masterKegList
+    masterKegList: state
   }
 }
 KegControl = connect(mapStateToProps)(KegControl)
 export default KegControl;
-
