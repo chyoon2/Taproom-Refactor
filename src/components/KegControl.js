@@ -11,7 +11,7 @@ class KegControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // formVisibleOnPage: false,
+      formVisibleOnPage: false,
       // masterKegList: [],
       selectedKeg: null,
       editFormOnPage: false 
@@ -20,7 +20,6 @@ class KegControl extends React.Component {
   handleEditClick = () => {
     // const selectedKeg = this.masterKegList.filter(
     //   (keg) => keg.id === id)[0];
-    console.log("reached")
       this.setState({ 
         editFormOnPage:true 
       });
@@ -29,7 +28,7 @@ class KegControl extends React.Component {
     const { dispatch } = this.props;
     const { id, name, alcohol, quantity } = this.props;
     const action = {
-      type: 'ADD_TICKET',
+      type: 'ADD_KEG',
       id: id,
       name: name,
       alcohol: alcohol,
@@ -58,7 +57,7 @@ class KegControl extends React.Component {
     const { dispatch } = this.props;
     const { id, name, alcohol, quantity } = newKeg;
     const action = {
-      type: 'ADD_TICKET',
+      type: 'ADD_KEG',
       id: id,
       name: name,
       alcohol: alcohol,
@@ -84,8 +83,8 @@ class KegControl extends React.Component {
   handleDeletingKeg = (id) => {
     const { dispatch } = this.props;
     const action = {
-      type: 'DELETE_TICKET',
-      id: id
+      type: 'DELETE_KEG',
+      id: id,
     }
     dispatch(action);
     this.setState({selectedKeg: null});
@@ -134,12 +133,12 @@ class KegControl extends React.Component {
 }
 
 KegControl.propTypes = {
-  masterTicketList: PropTypes.object
+  masterKegList: PropTypes.object
 };
 
 const mapStateToProps = state => {
   return {
-    masterTicketList: state
+    masterKegList: state.masterKegList
   }
 }
 KegControl = connect(mapStateToProps)(KegControl)
