@@ -95,7 +95,7 @@ class KegControl extends React.Component {
       quantity: selectedKeg.quantity,
     }
     dispatch(action);
-    console.log("motherfucker")
+    console.log("why you no work")
   }
 
   handleBuyingSelectedKeg = (id) => {
