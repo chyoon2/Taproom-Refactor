@@ -12,13 +12,14 @@ class KegControl extends React.Component {
     super(props);
     this.state = {
       selectedKeg: null,
-      editFormOnPage: false 
     }
   }
   handleEditClick = () => {
-      this.setState({ 
-        editFormOnPage:true 
-      });
+    const { dispatch } = this.props;
+    const action = {
+      type: 'EDIT_FORM'
+    }
+    dispatch(action);
   }
   handleEditingKegInList = (kegToEdit) => {
     const { dispatch } = this.props;
@@ -31,20 +32,26 @@ class KegControl extends React.Component {
       quantity: quantity,
     }
     dispatch(action);
+    const action2 = {
+      type: 'EDIT_FORM',
+    }
+    dispatch(action2);
     this.setState({ 
-      editFormOnPage: false,
       selectedKeg : null  
     });
   }
 
   handleClick = () => {
+    const { dispatch } = this.props;
     if (this.state.selectedKeg != null) {
+      const action2 = {
+        type: 'EDIT_FORM',
+      }
+      dispatch(action2);
       this.setState({
         selectedKeg: null,
-        editFormOnPage: false
       });
     } else {
-      const { dispatch } = this.props;
       const action = {
         type: 'TOGGLE_FORM'
       }
@@ -140,14 +147,15 @@ class KegControl extends React.Component {
 
 KegControl.propTypes = {
   masterKegList: PropTypes.object,
-  formVisibleOnPage: PropTypes.bool
+  formVisibleOnPage: PropTypes.bool,
+  editFormOnPage: PropTypes.bool
 };
 
 const mapStateToProps = state => {
   return {
     masterKegList: state.masterKegList,
-    formVisibleOnPage: state.formVisibleOnPage
-
+    formVisibleOnPage: state.formVisibleOnPage,
+    editFormOnPage: state.editFormOnPage
   }
 }
 KegControl = connect(mapStateToProps)(KegControl)
