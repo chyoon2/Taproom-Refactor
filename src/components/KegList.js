@@ -5,7 +5,7 @@ import Keg from "./Keg";
 function KegList(props) {
   return (
     <React.Fragment>
-      {props.kegList.map((keg) => (
+      {Object.values(props.KegList).map((keg) => (
         <Keg
           whenKegClicked={props.onKegSelection}
           whenBuyClicked={props.onBuySelection}
@@ -13,8 +13,7 @@ function KegList(props) {
           alcohol={keg.alcohol}
           quantity={keg.quantity}
           id={keg.id}
-          key={keg.id}
-        />
+          key={keg.id}/>
       ))}
     </React.Fragment>
   );

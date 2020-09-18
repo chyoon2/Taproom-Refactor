@@ -1,12 +1,12 @@
 export default (state = {}, action) => {
-  const { names, location, issue, id } = action;
+  const { name, alcohol, quantity, id } = action;
   switch (action.type) {
   case 'ADD_TICKET':
     return Object.assign({}, state, {
       [id]: {
-        names: names,
-        location: location,
-        issue: issue,
+        name: name,
+        alcohol: alcohol,
+        quantity: quantity,
         id: id
       }
     });
