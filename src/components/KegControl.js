@@ -5,6 +5,7 @@ import KegDetail from "./KegDetail";
 import KegEdit from "./KegEdit";
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
+import * as a from './../actions';
 
 
 class KegControl extends React.Component {
@@ -16,9 +17,7 @@ class KegControl extends React.Component {
 
   handleEditClick = () => {
     const { dispatch } = this.props;
-    const action = {
-      type: 'EDIT_FORM'
-    }
+    const action = a.toggleForm();
     dispatch(action);
   }
   handleEditingKegInList = (kegToEdit) => {
@@ -56,9 +55,7 @@ class KegControl extends React.Component {
       dispatch(action3);
 
     } else {
-      const action = {
-        type: 'TOGGLE_FORM'
-      }
+      const action = a.toggleForm();
       dispatch(action)
     }
   }
@@ -74,9 +71,7 @@ class KegControl extends React.Component {
       quantity: quantity,
     }
     dispatch(action);
-    const action2 = {
-      type: 'TOGGLE_FORM',
-    }
+    const action2 = a.toggleForm();
     dispatch(action2);
     const action3 = {
       type: 'SELECT_GONULL'
@@ -106,10 +101,7 @@ class KegControl extends React.Component {
 
   handleDeletingKeg = (id) => {
     const { dispatch } = this.props;
-    const action = {
-      type: 'DELETE_KEG',
-      id: id,
-    }
+    const action = a.deleteKeg(id);
     dispatch(action);
     const action3 = {
       type: 'SELECT_GONULL'
